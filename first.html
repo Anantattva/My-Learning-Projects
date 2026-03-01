@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My First Project</title>
+   <style>
+  /* 1. The Body: The "Paper" of your site */
+  body {
+    background-color: #33AAFF;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333; /* Dark grey text is easier to read than pure black */
+    line-height: 1.6; /* Adds space between lines of text */
+    margin: 0;
+    padding: 20px;
+  }
+
+  /* 2. The Header: Making your name stand out */
+  h1 {
+    color: #AA55FF;
+    text-align: center;
+    padding-bottom: 10px;
+  }
+
+  /* 3. The Table: Making it look like a clean Ledger */
+  table {
+    width: 100%;
+    border-collapse: collapse; /* Removes double borders */
+    background: white;
+    margin: 20px 0;
+  }
+
+  th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+
+  th {
+    background-color: #2c3e50;
+    color: white;
+  }
+  /*Styling navbar*/
+/* 1. The Container */
+.navbar {
+  background-color: lightgreen;
+  padding: 10px 0;
+  margin-bottom: 20px;
+}
+
+/* 2. Remove bullets and align horizontal */
+.navbar ul {
+  list-style-type: none; /* Removes the dots */
+  margin: 0;
+  padding: 0;
+  display: flex; /* Magic command: aligns items side-by-side */
+  justify-content: center; /* Centers the menu */
+}
+
+/* 3. Spacing and Text Style*/
+.navbar li {
+  margin: 0 15px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none; /* Removes the underline */
+  font-weight: bold;
+}
+
+/* 4. Hover effect: Interactive feedback */
+.navbar a:hover {
+  color: #27ae60; /* Turns green when you touch/hover */
+}
+
+</style>
+  </head>
+  <body>
+    <div class="navgbar">
+      <nav class="navbar">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="https://t.me/LaTeXLearningNotes">Join my Channel</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="Header">
+      <h1>ॐ नमः शिवाय</h1>
+    </div>
+    <div class="Main-content">
+      <table>
+        <caption>My Favourite Coding Languages</caption>
+        <tr>
+          <th>Name</th>
+          <th>Purpose</th>
+        </tr>
+        <tr>
+          <td>LaTeX</td>
+          <td>Professional whitepapers & documents</td>
+        </tr>
+        <tr>
+          <td>HTML</td>
+          <td>Web Programming</td>
+        </tr>
+        <tr>
+          <td>CSS</td>
+          <td>Web Programming</td>
+        </tr>
+        <tr>
+          <td>JavaScript</td>
+          <td>Web Programming</td>
+        </tr>
+      </table>
+    </div>
+      <hr>
+      <div class="GST calculator (12%)">
+        <h4>GST Calculator</h4>
+        <label for="amount">Enter your amount:</label>
+        <input type="number" id="amount" placeholder="Your amount in INR">
+        <button onclick="CalculateTax()">Total Amount</button>
+        <p id="gst"></p>
+        <p id="result"></p>
+      </div>
+      <script>
+        function CalculateTax() {
+          let price = document.getElementById('amount').value;
+          let total = price * 1.12;
+          let GST = price * 0.12;
+          total = total.toFixed(2);
+          document.getElementById('result').innerText = "Total including GST: ₹"+ total;
+          document.getElementById('gst').innerText = "GST: ₹"+GST;
+        }
+      </script>
+  </body>
+</html
