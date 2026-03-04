@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<head>
+  <title>
+    Calculator Project
+  </title>
+  <style>
+    h1 {
+      color: gold;
+      text-align: center;
+    }
+    h3 {
+      text-align: center;
+      color: pink;
+    }
+    body {
+      background-color: #abbbff;
+    }
+    #display {
+      width: 95%;
+      height: 50px;
+      text-align: right;
+      font-size: 21px;
+      padding: 10px;
+      background-color: #23aaff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+    }
+    .keys {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
+      padding: 10px;
+    }
+    button {
+      padding: 15px;
+      color: magenta;
+      font: sans-serif;
+      font-size: 30px;
+      background-color: lightgreen;
+      border: none;
+      border-radius: 7px;
+    }
+    /*Change color when u click/hover the button*/
+    button:hover {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <hr>
+  <h1>ॐ नमः शिवाय</h1>
+  <hr>
+  <h3>My Second Project</h3>
+  <h3>Mini Calculator</h3>
+  <div class="calculator">
+    <input type="text" id ="display" disabled>
+    <div class="keys">
+      <button onclick="appendToDisplay('1')">1</button>
+      <button onclick="appendToDisplay('2')">2</button>
+      <button onclick="appendToDisplay('3')">3</button>
+      <button onclick="appendToDisplay('+')">+</button>
+      <button onclick="appendToDisplay('4')">4</button>
+      <button onclick="appendToDisplay('5')">5</button>
+      <button onclick="appendToDisplay('6')">6</button>
+      <button onclick="appendToDisplay('-')">-</button>
+      <button onclick="appendToDisplay('7')">7</button>
+      <button onclick="appendToDisplay('8')">8</button>
+      <button onclick="appendToDisplay('9')">9</button>
+      <button onclick="appendToDisplay('*')">*</button>
+      <button onclick="clearDisplay()">C</button>
+      <button onclick="appendToDisplay('0')">0</button>
+      <button onclick="calculate()">=</button>
+      <button onclick="appendToDisplay('/')">/</button>
+    </div>
+  </div>
+    <hr>
+  <h1>ॐ नमः शिवाय</h1>
+  <hr>
+  <script>
+    // Coding the Brain using JS
+    function clearDisplay() {
+      display.value="";
+    }
+    function appendToDisplay(input) {
+      display.value += input;
+    }
+    function calculate(){
+      try {
+        display.value = eval(display.value);
+      }
+      catch (error) {
+        display.value = "Error";
+      }
+    }
+  </script>
+</body>
