@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Math Equation Checker</title>
+  </head>
+  <style>
+    body {
+      background-color: skyblue;
+    }
+  </style>
+  <body>
+    <h3 style="
+    text-align: center;">ॐ नमः शिवाय <br>
+    Hello! You give me Math equations as input and I check whether it's correct or not.</h3>
+    <div class="DisplayBox">
+      <input type="text" id="Input" placeholder="Ex: 10+2=12" style="
+      text-align: center;
+      background-color: #0ff;
+      border: none;
+      width: 100%;
+      height: 50px;"></input>
+      <br><br>
+      <button id="Checker" onclick="Verify()" style="
+      text-align: center;
+      border: none;">Check</button>
+      <p id="Result" style = "
+      text-align: center;"></p>
+      <button id="Explain" style="
+      display: none;
+      text-align: center;
+      border: none;" onclick="ExplainEquation()">Show Explanation</button>
+      <p id="Breakdown"></p>
+    </div>
+    <script>
+      //Our JS Bro 
+      //Extracting details
+      //Defining Functions
+      function Verify() {
+        let Equation = document.getElementById('Input').value;
+        let Components = Equation.split("=");
+        let LHS = Components[0];
+        let RHS = Components[1];
+        let LeftValue = eval(LHS);
+        let RightValue = eval(RHS);
+        if (LeftValue == RightValue) {
+          document.getElementById('Result').innerText = "True";
+          document.getElementById('Explain').style.display = 'block';
+        }
+        else {
+          document.getElementById('Result').innerText = "False";
+          document.getElementById('Explain').style.display = 'block';
+        }
+      };
+      
+      function ExplainEquation() {
+        let Equation = document.getElementById('Input').value;
+        let Components = Equation.split("=");
+        let LHS = Components[0];
+        let RHS = Components[1];
+        let LeftValue = eval(LHS);
+        let RightValue = eval(RHS);
+        
+        if (LeftValue == RightValue) {
+          document.getElementById('Breakdown').innerText = "Your both left-hand & right-hand side equals "    +LeftValue+".";
+        }
+        else {
+          document.getElementById('Breakdown').innerText = "Your left-hand side equals "+LeftValue+" while right-hand side equals "+ RightValue+".";
+        }
+      };
+    </script>
+  </body>
+</html>
