@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pell Generator</title>
+  </head>
+  <style>
+    <style>
+  :root {
+    --primary-color: #2c3e50;    /* Professional Navy */
+    --bg-color: #f8f9fa;         /* Soft LaTeX Paper Grey */
+    --accent-color: #e74c3c;     /* Subtle Red for accents */
+    --table-header: #ecf0f1;
+  }
+
+  body {
+    background-color: var(--bg-color);
+    font-family: 'Cambria', 'Georgia', serif; /* Serif font for LaTeX look */
+    color: var(--primary-color);
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+  }
+
+  h1 {
+    font-variant: small-caps;     /* Classic LaTeX style */
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    text-align: center;
+  }
+
+  /* Designing the Input area like a Canva card */
+  .control-panel {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  input[type="number"] {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 10px;
+    width: 200px;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+    text-align: center;
+  }
+
+  input[type="number"]:focus {
+    border-color: var(--primary-color);
+  }
+
+  button {
+    background-color: var(--primary-color);
+    color: black;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  button:hover {
+    background-color: #044599;
+    transform: translateY(2px); /* Subtle "pop" effect */
+  }
+
+  /* The "Journal" Table Look */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden; /* Clips corners to the border-radius */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  }
+
+  th {
+    background-color: var(--table-header);
+    padding: 15px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--primary-color);
+  }
+
+  td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+  }
+
+  tr:nth-child(even) {
+    background-color: #fafafa; /* Subtle zebra stripes */
+  }
+</style>
+  <body>
+    <h1>Pell Generating Engine</h1>
+    <h3>Hello! I help you generate Pell numbers.</h3>
+    <p>Pell numbers (P_n) are defined by a recurrence relation that begins with 0 & 1 and each next term is the sum of twice it's previous one & the one even preceeding it.<br>
+    The first few Pell numbers are 0, 1, 2 ,5, etc.</p>
+    <div class="control-panel">
+    <label for="n">Enter how many Pell numbers you want:</label>
+    <input type="number" id="n" placeholder="Only whole numbers"></input><br>
+    <button onclick="GenPell()">Generate</button>
+    </div>
+    <p id="Output"></p>
+    <script>
+      //Our JS Bro
+      function GenPell() {
+        //Grab n 
+        let n = parseInt(document.getElementById('n').value);
+        //The First 2 terms
+        let Pell = [0,1];
+        //Table Setup
+        let Table = "<table><tr><th>n</th><th>P_n</th></tr><tr><td>0</td><td>0</td></tr><tr><td>1</td><td>1</td></tr>";
+        //The Loop
+        for (let i=2; i<n+1; i++) {
+          NextPell = (2*Pell[i-1]+Pell[i-2]);
+          Pell.push(NextPell);
+          Table += "<tr><td>"+i+"</td><td>"+NextPell+"</td></tr>";
+        };
+        //Table Close & Return
+        Table += "</table>"
+        document.getElementById('Output').innerHTML = Table;
+      };
+    </script>
+  </body>
+</html>
