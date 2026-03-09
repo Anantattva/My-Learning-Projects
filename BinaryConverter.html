@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Binary Converter</title>
+    <style>
+      h1 {
+        font-family: Times New Roman;
+        font-weight: 400;
+        color: navy;
+      }
+      div {
+        text-align: center;
+      }
+      button {
+        font-family: Times New Roman;
+        border: none;
+        color: white;
+        background-color: black;
+        border-radius: 5px;
+        padding: 10px 25px;
+        cursor: pointer;
+      }
+      button:hover {
+        border: none;
+        color: black;
+        background-color: white;
+        cursor: pointer;
+      }
+      label {
+        font-family: Georgia;
+        font-size: 18px;
+        font-weight: 500;
+      }
+      p {
+        font-family: Times New Roman;
+        font-size: 18px;
+        font-weight: 400;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="HomePage"><h1>Welcome!<br>
+    I help you convert binary numbers into decimal numbers & vice-versa.<br>
+    Choose what you would like to do.<br></h1>
+    <button onclick="ShowPage1()">Binary to Decimal</button><br><br>
+    <button onclick="ShowPage2()">Decimal to Binary</button>
+    </div>
+    <div id="Page1" style="
+    display: none;">
+      <h1>Binary to Decimal Converter</h1>
+      <label for="BinaryInput">Enter your binary:</label>
+      <input id="BinaryInput" type="number" placeholder="Ex: 10010"></input><br><br>
+      <button onclick="FindDecimal()">Calculate Decimal</button><br><br>
+      <p id="DecimalOutput"></p>
+      <button onclick="ShowPage2()">Decimal to Binary</button><br><br>
+      <button onclick="ShowHomePage()">Home Page</button>
+    </div>
+    <div id="Page2" style="
+    display: none;">
+      <h1>Decimal to Binary Converter</h1>
+      <label for="DecimalInput">Enter your decimal:</label>
+      <input id="DecimalInput" type="number" placeholder="Ex: 547"></input><br><br>
+      <button onclick="FindBinary()">Calculate Binary</button><br><br>
+      <p id="BinaryOutput"></p>
+      <button onclick="ShowPage1()">Binary to Decimal</button><br><br>
+      <button onclick="ShowHomePage()">Home Page</button>
+    </div>
+    <script>
+      //Our JS Bro 
+      //Change Page Functions
+      function ShowPage1() {
+        document.getElementById('HomePage').style.display = 'none';
+        document.getElementById('Page2').style.display = 'none';
+        document.getElementById('Page1').style.display = 'block';
+      };
+      function ShowPage2() {
+        document.getElementById('HomePage').style.display = 'none';
+        document.getElementById('Page1').style.display = 'none';
+        document.getElementById('Page2').style.display = 'block';
+      };
+      function ShowHomePage() {
+        document.getElementById('HomePage').style.display = 'block';
+        document.getElementById('Page1').style.display = 'none';
+        document.getElementById('Page2').style.display = 'none';
+      };
+      //Calculation Functions
+      function FindDecimal() {
+        let Binary = parseInt(document.getElementById('BinaryInput').value, 2);
+        let Decimal = Binary.toString(10);
+        document.getElementById('DecimalOutput').innerText = "Your decimal is: " + Decimal+".";
+      };
+      function FindBinary() {
+        let Decimal = parseInt(document.getElementById('DecimalInput').value, 10);
+        let Binary = Decimal.toString(2);
+        document.getElementById('BinaryOutput').innerText = "Your binary is: " + Binary+".";
+      };
+    </script>
+  </body>
+</html>
