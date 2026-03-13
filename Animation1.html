@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      My First Animation
+    </title>
+    <style>
+      body {
+        text-align: center;
+      }
+      #track {
+        align-content: center;
+        width: 300px;
+        height: 50px;
+        border: 1px solid;
+        position: relative;
+        background-color: white;
+        margin: 20px auto;
+      }
+      #dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: red;
+        position: absolute;
+        left: 20px;
+        top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Moving Dot Animation</h1>
+    <hr>
+    <div id="track">
+      <div id="dot"></div>
+    </div><hr><br>
+    <button onclick="MoveRight()">Move Dot</button>
+    <script>
+      //Our JS Bro
+      function MoveRight() {
+        //Grab Data
+        let dot = document.getElementById('dot');
+        let position = 20;
+        //setInterval - our heartbeat
+        let timer = setInterval(function() {
+          position++;
+          dot.style.left = position + "px";
+          //Stop 
+          if (position >= 280) {
+            clearInterval(timer);
+          };
+        }, 10);
+      };
+    </script>
+  </body>
+</html>
