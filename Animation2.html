@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Animations</title>
+    <style>
+      body {
+        text-align: center;
+        font-family: Times New Roman;
+        background-color: powderblue;
+      }
+      #square1 {
+        width: 300px;
+        height: 300px;
+        position: relative;
+        border: 3px solid;
+        border-radius: 15%;
+        margin: auto;
+      }
+      #dot1 {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: darkblue;
+        position: absolute;
+        left: 140px;
+        top: 10px;
+      }
+      button {
+        border: none;
+        background-color: powderblue;
+        color: red;
+        position: absolute;
+        left: 140px;
+        top: 140px;
+      }
+      #circle {
+        width: 300px;
+        height: 300px;
+        position: relative;
+        border: 3px solid;
+        border-radius: 15%;
+        margin: auto;
+      }
+      #dot2 {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: darkblue;
+        position: absolute;
+        left: 140px;
+        top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Square 1</h1>
+    <div id="square1">
+      <div id="dot1"></div>
+      <button id="button1" onclick="TravelSquare()">▶</button>
+    </div>
+    <br><hr>
+    <h1>Circle</h1>
+    <div id="circle">
+      <div id="dot2"></div>
+      <button id="button2" onclick="TravelCircle()">▶</button>
+    </div>
+    <script>
+      //Our JS Bro
+      //Move Square
+      function TravelSquare() {
+        let dot = document.getElementById('dot1');
+        let left = 140;
+        let top = 10;
+        let timer1 = setInterval(function() {
+          left++; top++;
+          dot.style.left = left + "px";
+          dot.style.top = top + "px";
+          if (left >= 270) {
+            clearInterval(timer1);
+            StartPhase2()
+          }
+        }, 10);
+        function StartPhase2() {
+          let timer2 = setInterval(function() {
+            left--; top++;
+            dot.style.left = left + "px";
+            dot.style.top = top + "px";
+            if (left <= 140) {
+              clearInterval(timer2);
+              StartPhase3();
+            };
+          }, 10);
+          function StartPhase3() {
+            let timer3 = setInterval(function() {
+              left--,top--;
+              dot.style.left = left + "px";
+              dot.style.top = top + "px";
+              if (left <= 10) {
+                clearInterval(timer3);
+                StartPhase4();
+              };
+            }, 10);
+            function StartPhase4() {
+              let timer4 = setInterval(function() {
+                left++; top--;
+                dot.style.left = left + "px";
+                dot.style.top = top + "px";
+                if (left >= 140) {
+                  clearInterval(timer4);
+                }
+              }, 10);
+            };
+          };
+        };
+      };
+      //Move circle
+      function TravelCircle() {
+        let dot = document.getElementById('dot2');
+        let angle = -1.570796; // Start at 0 radians
+        let radius = 130; // How big the circle is
+        let centerX = 140;  // The "Anchor" point in your box
+        let centerY = 140;
+        let timer = setInterval(function() {
+          angle += 0.0075; // This makes the angle GROW every tick 
+            // Calculate new position using the growing angle
+            let x = centerX + radius * Math.cos(angle);
+            let y = centerY + radius * Math.sin(angle);
+              dot.style.left = x + "px";
+              dot.style.top = y + "px";
+              // Stop at roughly 90 degrees (Math.PI / 2)
+              if (angle >= 4.71238890) {
+                clearInterval(timer);
+            }
+          }, 10);
+        };
+    </script>
+  </body>
+</html>
